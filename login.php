@@ -12,7 +12,7 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans" rel="stylesheet">
-    <link href="style2.css" rel="stylesheet">
+    <link href="allstyle.css" rel="stylesheet">
     <title>Login</title>
 </head>
 
@@ -127,7 +127,7 @@ session_start();
                 <label id="label_pass_check" class="label"><?php echo $noti ?></label>
             </div>
         </div>
-        <script src="all2.js"></script>
+        <script src="script.js"></script>
     </form>
 
 </body>
