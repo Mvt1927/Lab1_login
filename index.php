@@ -31,7 +31,7 @@ if (!isset($_SESSION['username'])) {
 		header('Location: login.php');
 		exit;
 	} ?>
-	<form action="hello.php" method="POST">
+	<form action="index.php" method="POST">
 		<h3 style="text-align: center;">Chúc mừng bạn có username là <?php echo $_SESSION['username'] ?> đã đăng nhập thành công ! </h3>
 		<div class="khung_login" style="left: 40%;">
 			<button type="submit" name="submit" id="btn_login" class="btn_login">
