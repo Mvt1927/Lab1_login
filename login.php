@@ -12,7 +12,7 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans" rel="stylesheet">
-    <link href="allstyle.css" rel="stylesheet">
+    <link href="allstyle2.css" rel="stylesheet">
     <title>Login</title>
 </head>
 
@@ -27,10 +27,11 @@ session_start();
             $query = mysqli_query($conn, $sql);
             if (mysqli_num_rows($query) > 0) {
                 header('location:index.php');
-                exit;
             }
         }
     }
+    $_SESSION['temppass2'] = "";
+    $_SESSION['tempuser2'] = "";
     $noti = "";
     $snoti = "";
     $np = "";
@@ -43,9 +44,11 @@ session_start();
         $password = strip_tags($password);
         $password = addslashes($password);
         $a_check = ((isset($_POST['checkbox']) != 0) ? 1 : "");
-        if ($a_check==1) {
+        if ($a_check == 1) {
             $_SESSION['a_check'] = "checked";
-        }else $_SESSION['a_check'] = "";
+        } else {
+            $_SESSION['a_check'] = "";
+        };
 
         if ($user == "") {
             $_SESSION['tempuser'] = $user;
@@ -68,7 +71,7 @@ session_start();
                     $f_user = $user;
                     $f_pass = $password;
                     if ($a_check == 1) {
-                        /* setcookie($cookie_name, 'usr=' . $f_user . '&hash=' . $f_pass, time() + $cookie_time); */
+                        setcookie($cookie_name, 'usr=' . $f_user . '&hash=' . $f_pass, time() + $cookie_time);
                         $_SESSION['password'] = $password;
                     } else $_SESSION['password'] = "";
                     $noti = "";
@@ -80,18 +83,19 @@ session_start();
         }
     }
     ?>
-    <form id="login_form" action="login.php" method="POST">
-        <div id="khung_ngoai" class="khung_ngoai <?php echo $snoti ?>">
-            <div class="khung_sign">
-                <div class="khung_singin">
-                    <h4 class="text signin">Sign in</h4>
-                </div>
-                <div class="khung_singup">
-                    <button id="btn_signup" class="btn_singup">
-                        Sign up
-                    </button>
-                </div>
+
+    <div id="khung_ngoai" class="khung_ngoai <?php echo $snoti ?>">
+        <div class="khung_sign">
+            <div class="khung_singin">
+                <h4 class="text signin">Sign in</h4>
             </div>
+            <div class="khung_singup">
+                <button id="btn_signup" class="btn_singup" onclick="location.href='signup.php'">
+                    Sign up
+                </button>
+            </div>
+        </div>
+        <form id="login_form" action="login.php" method="POST">
             <div class="khung_lable_user">
                 <label id="label_user" class="label <?php echo $nu ?>">Your user name</label>
             </div>
@@ -107,8 +111,8 @@ session_start();
             </div>
             <div class="khung_input_pass">
                 <input id="inputpass" name="password" class="input_field <?php echo $np ?>" placeholder="******" type="password" value="<?php if (isset($_SESSION['temppass'])) {
-                                                                                echo $_SESSION['temppass'];
-                                                                            }  ?>">
+                                                                                                                                            echo $_SESSION['temppass'];
+                                                                                                                                        }  ?>">
             </div>
             <div class="khung_check_save_pass">
                 <label class="khung_label_save_pass">
@@ -123,12 +127,13 @@ session_start();
                     Login
                 </button>
             </div>
-            <div class="khung_noti error">
-                <label id="label_pass_check" class="label"><?php echo $noti ?></label>
-            </div>
+        </form>
+        <div class="khung_noti error">
+            <label id="label_pass_check" class="label"><?php echo $noti ?></label>
         </div>
-        <script src="script.js"></script>
-    </form>
+    </div>
+    <script src="script.js"></script>
+
 
 </body>
 

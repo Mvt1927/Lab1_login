@@ -217,3 +217,43 @@
 input.error {
     border: 1px solid rgba(255, 0, 0, 0.788);
 }
+
+.khung_input_repass {
+    height: 40px;
+    width: 330px;
+    left: 10px;
+    top: 295px;
+    float: left;
+    position: absolute;
+}
+
+.khung_signup2 {
+    height: 40px;
+    width: 330px;
+    left: 10px;
+    top: 350px;
+    float: left;
+    position: absolute;
+}
+
+.khung_signup2>.move {
+    color: white;
+    background-color: rgb(0, 50, 255);
+    border: solid 1px rgb(0, 50, 255);
+}
+
+.signup {
+    height: 410px;
+}
+
+.signup.noti {
+    height: 440px;
+}
+
+.signup.noti .khung_noti {
+    top: 390px;
+}
+
+.he {
+    top: 20px;
+}
